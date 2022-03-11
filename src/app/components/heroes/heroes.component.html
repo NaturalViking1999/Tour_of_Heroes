@@ -1,0 +1,21 @@
+<h3>Heroes</h3>
+<div class="card">
+    <ul *ngFor="let hero of heroService.heroes">
+        <li>
+            <p class="btn id" #hrId>{{hero.id}}</p> 
+            <p class="btn name" (click)="[toggle = !toggle, onEvent($event)]">{{hero.name}}</p>
+            <button class="btn" (click)="deleteHero(hrId)">X</button>
+        </li>
+    </ul>
+
+    <div *ngIf="toggle">
+        <p>{{heroValue}} is my hero!</p>
+        <button class="btn" (click)="toggle = !toggle">Close</button>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="addNewHero()">
+        <label for="">Name:</label>
+        <input type="text" (input)="onInput($event)">
+        <button type="submit" class="btn">Create</button>
+    </form>
+</div>

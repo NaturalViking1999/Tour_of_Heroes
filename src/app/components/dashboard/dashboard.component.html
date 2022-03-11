@@ -1,0 +1,22 @@
+<h3>Top Heroes</h3>
+<div class="card">
+    <div class="dashboard" *ngIf="!toggle">
+      <ul>
+          <li class="btn" 
+          *ngFor="let hero of heroService.heroes" 
+          (click)="[onSelect(hero), toggle = !toggle]" 
+          [class.selected]="hero === selectedHero">
+          {{hero.name}}
+        </li>
+        </ul>
+    </div>
+    <div class="hero-info" *ngIf="toggle">
+        <h2>{{selectedHero.name}} info</h2>
+        <p>Id: {{selectedHero.id}}</p>
+        <div class="flex">
+            <label for="">Name:</label>
+            <input type="text" [(ngModel)]="selectedHero.name">
+        </div>
+        <button class="btn" (click)="[toggle = !toggle]">Back</button>
+    </div>
+</div>
