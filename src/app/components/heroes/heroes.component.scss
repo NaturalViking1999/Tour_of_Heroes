@@ -1,3 +1,8 @@
+.head {
+  display: flex;
+  align-items: center;
+}
+
 li {
   display: flex;
 }
@@ -24,4 +29,22 @@ p {
   padding-right: 0;
   width: 50px;
   text-align: center;
+}
+
+input {
+  width: 200px;
+  flex: 1 1 auto;
+  margin: 0 0;
+}
+
+.flex {
+  display: flex;
+  margin: 0 50px;
+  width: 350px;
+  justify-content: center;
+}
+
+label {
+  flex: 1 1 auto;
+  margin: 0 5px;
 }

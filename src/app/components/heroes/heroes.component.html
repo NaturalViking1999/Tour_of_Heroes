@@ -1,10 +1,11 @@
 <h3>Heroes</h3>
+<div class="head">
 <div class="card">
-    <ul *ngFor="let hero of heroService.heroes">
+    <ul *ngFor="let hero of heroService.heroes, let i = index">
         <li>
-            <p class="btn id" #hrId>{{hero.id}}</p> 
+            <p class="btn id" #hrIndx>{{i+1}}</p> 
             <p class="btn name" (click)="[toggle = !toggle, onEvent($event)]">{{hero.name}}</p>
-            <button class="btn" (click)="deleteHero(hrId)">X</button>
+            <button class="btn" (click)="deleteHero(hrIndx)">X</button>
         </li>
     </ul>
 
@@ -12,10 +13,12 @@
         <p>{{heroValue}} is my hero!</p>
         <button class="btn" (click)="toggle = !toggle">Close</button>
     </div>
-
+</div>
     <form [formGroup]="form" (ngSubmit)="addNewHero()">
-        <label for="">Name:</label>
-        <input type="text" (input)="onInput($event)">
-        <button type="submit" class="btn">Create</button>
+        <div class="flex">
+            <label for="">Name:</label>
+            <input type="text" (input)="onInput($event)" placeholder="Add Hero name">
+            <button type="submit" class="btn">Create</button>
+        </div>
     </form>
 </div>

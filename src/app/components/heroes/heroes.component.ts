@@ -18,7 +18,7 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      heroName: new FormControl([Validators.minLength(3)]) 
+      heroName: new FormControl() 
     })
   }
 
@@ -31,13 +31,13 @@ export class HeroesComponent implements OnInit {
   }
 
   addNewHero() {
-    const formData = {...this.form.value};
+    if (this.inputValue.length >= 3) {
     this.heroService.heroes.push({id: this.heroService.heroes.length + 1, name: this.inputValue});
     this.inputValue = '';
+    }
   }
 
-  deleteHero(hrId: any) {
-    console.log(hrId.textContent)
-    this.heroService.heroes.splice(+hrId.textContent - 1, 1)
+  deleteHero(hrIndx: any) {
+    this.heroService.heroes.splice(+hrIndx.textContent - 1, 1)
   }
 }
