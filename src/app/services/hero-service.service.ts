@@ -4,7 +4,7 @@ export interface Hero{
 }
 
 export class HeroServiceService {
-  public heroes: Array<Hero> = [
+  public heroes: Hero[] = [
     {id: 1, name: 'Antimage'},
     {id: 2, name: 'Bristleback'}, 
     {id: 3, name: 'Centaur Warrunner'}, 
@@ -21,7 +21,7 @@ export class HeroServiceService {
 }
 
 export class HeroServiceService2 {
-  public heroes: Array<Hero> = [
+  public heroes: Hero[] = [
     {id: 5, name: 'Sergey Lazarenkov'},
     {id: 7, name: 'Big $anya'},
     {id: 11, name: 'Ass Hacker'},

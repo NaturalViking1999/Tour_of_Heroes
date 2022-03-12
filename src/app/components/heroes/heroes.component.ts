@@ -37,7 +37,9 @@ export class HeroesComponent implements OnInit {
     }
   }
 
-  deleteHero(hrIndx: any) {
-    this.heroService.heroes.splice(+hrIndx.textContent - 1, 1)
+  deleteHero(hrIndx: any, hero:any) {
+    console.log(this.heroService.heroes.findIndex(item => {return item.id == hero.id}));
+    this.heroService.heroes.splice(this.heroService.heroes.findIndex(item => item.id == hero.id), 1)
+    // this.heroService.heroes.splice(+hrIndx.textContent - 1, 1)
   }
 }
