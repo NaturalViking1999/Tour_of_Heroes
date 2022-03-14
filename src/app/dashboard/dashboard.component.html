@@ -3,7 +3,7 @@
     <div class="dashboard" *ngIf="!toggle">
       <ul>
           <li class="btn" 
-          *ngFor="let hero of heroService.heroes" 
+          *ngFor="let hero of heroService.heroes2" 
           (click)="[onSelect(hero), toggle = !toggle]" 
           [class.selected]="hero === selectedHero">
           {{hero.name}}

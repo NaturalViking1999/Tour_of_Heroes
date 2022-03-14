@@ -104,3 +104,12 @@ textarea {
 hr {
   margin: 0.5rem 0;
 }
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

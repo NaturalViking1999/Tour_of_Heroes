@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HeroServiceService } from 'src/app/services/hero-service.service';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Hero } from 'src/app/hero';
+import { HeroService, HeroServiceService2 } from 'src/app/hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -9,17 +10,24 @@ import { HeroServiceService } from 'src/app/services/hero-service.service';
 })
 
 export class HeroesComponent implements OnInit {
+  heroes: Hero[] = [];
   form!: FormGroup;
   toggle: boolean = false;
   heroValue!: string;
   inputValue: string = '';
 
-  constructor(public heroService: HeroServiceService) {}
+  constructor(private heroService: HeroService, public heroService2: HeroServiceService2) {}
 
   ngOnInit(): void {
+    this.getHeroes();
     this.form = new FormGroup({
       heroName: new FormControl() 
     })
+  }
+
+  getHeroes(): void {
+    this.heroService.getHeroes()
+    .subscribe(items => (this.heroes = items));
   }
 
   onEvent(event: any) {
@@ -32,14 +40,14 @@ export class HeroesComponent implements OnInit {
 
   addNewHero() {
     if (this.inputValue.length >= 3) {
-    this.heroService.heroes.push({id: this.heroService.heroes.length + 1, name: this.inputValue});
+    this.heroes.push({id: this.heroes.length + 1, name: this.inputValue});
     this.inputValue = '';
     }
   }
 
   deleteHero(hrIndx: any, hero:any) {
-    console.log(this.heroService.heroes.findIndex(item => {return item.id == hero.id}));
-    this.heroService.heroes.splice(this.heroService.heroes.findIndex(item => item.id == hero.id), 1)
+    // console.log(this.heroService.heroes.findIndex(item => {return item.id == hero.id}));
+    this.heroes.splice(this.heroes.findIndex(item => item.id == hero.id), 1)
     // this.heroService.heroes.splice(+hrIndx.textContent - 1, 1)
   }
 }
