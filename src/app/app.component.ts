@@ -4,10 +4,11 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
   <div class="container">
-  <h1>{{title}}</h1>
+  <h1>{{title | fencecase}}</h1>
  
 <div class="nav">
   <nav>
+    <a routerLink="/auth" routerLinkActive="active" class="btn">Auth</a>
     <a routerLink="/dashboard" routerLinkActive="active" class="btn">Dashboard</a>
     <a routerLink="/heroes" routerLinkActive="active" class="btn">Heroes</a>
   </nav>
@@ -22,5 +23,5 @@ import { Component } from '@angular/core';
   `]
 })
 export class AppComponent {
-  public title: string = 'Tour of Heroes';
+  public title: string = 'Tour  of  Heroes';
 }

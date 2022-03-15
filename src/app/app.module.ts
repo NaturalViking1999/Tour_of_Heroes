@@ -13,13 +13,16 @@ import { HeroServiceService2 } from './hero.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InMemoryDataService } from './in-memory-data.service';
 import { MessagesComponent } from './messages/messages.component';
+import { FenceCasePipe } from './fenceCase.pipe';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     HeroesComponent,
-    MessagesComponent
+    MessagesComponent,
+    FenceCasePipe
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { MessagesComponent } from './messages/messages.component';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
+    AuthModule
   ],
   providers: [HeroServiceService2],
   bootstrap: [AppComponent]
