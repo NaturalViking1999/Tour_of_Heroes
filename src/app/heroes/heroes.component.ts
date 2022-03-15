@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Hero } from 'src/app/hero';
-import { HeroService, HeroServiceService2 } from 'src/app/hero.service';
+import { Hero } from '../hero';
+import { HeroService, HeroServiceService2 } from '../hero.service';
 
 @Component({
   selector: 'app-heroes',
