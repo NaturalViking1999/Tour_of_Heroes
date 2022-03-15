@@ -35,7 +35,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   
   div {
     margin: 0 auto;
-    width: 50vw;
+    width: 400px;
     background: rgb(255, 255, 255);
     background: linear-gradient(
       90deg,
