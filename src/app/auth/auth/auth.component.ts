@@ -55,6 +55,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   .small {
     text-align: center;
   }
+  .small {
+    text-shadow: .6px 0 .6px #000, 0 .6px .6px #000, -.6px 0 .6px #000,
+          0 -1px 1px #000;
+  }
+  .h2 {
+    font-weight: bold
+  }
   `]
 })
 export class AuthComponent implements OnInit {
