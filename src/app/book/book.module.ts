@@ -6,6 +6,9 @@ import { SecondPageComponent } from './second-page/second-page.component';
 import { ThirdPageComponent } from './third-page/third-page.component';
 import { LastPageComponent } from './last-page/last-page.component';
 import { BookRoutingModule } from './book-routing.module';
+import { HeaderComponent } from './header';
+import { NavComponent } from './nav';
+import { BookComponent } from './book.component';
 
 
 
@@ -15,7 +18,10 @@ import { BookRoutingModule } from './book-routing.module';
     FirstPageComponent,
     SecondPageComponent,
     ThirdPageComponent,
-    LastPageComponent
+    LastPageComponent,
+    HeaderComponent,
+    NavComponent,
+    BookComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +32,10 @@ import { BookRoutingModule } from './book-routing.module';
     FirstPageComponent,
     SecondPageComponent,
     ThirdPageComponent,
-    LastPageComponent
+    LastPageComponent,
+    HeaderComponent,
+    NavComponent,
+    BookComponent
   ]
 })
 export class BookModule { }

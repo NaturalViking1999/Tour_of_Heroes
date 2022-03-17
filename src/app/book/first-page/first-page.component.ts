@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-first-page',
-  template: `<h1>WH School</h1>
-  <hr>
+  template: `
   <div>
   <header>
       <div>
@@ -20,13 +19,6 @@ import { Component, OnInit } from '@angular/core';
       <p>Задача организации, в особенности же укрепление и развитие структуры играет важную роль в формировании модели развития. Таким образом реализация намеченных плановых заданий способствует подготовки и реализации системы обучения кадров, соответствует насущным потребностям. С другой стороны дальнейшее развитие различных форм деятельности влечет за собой процесс внедрения и модернизации соответствующий условий активизации. </p>
   </main>
 </div>
-<nav class="nav-book">
-      <a routerLink="/book/titlepage" routerLinkActive="active" class="btn">1</a>
-      <a routerLink="/book/firstpage" routerLinkActive="active" class="btn">2</a>
-      <a routerLink="/book/secondpage" routerLinkActive="active" class="btn">3</a>
-      <a routerLink="/book/thirdpage" routerLinkActive="active" class="btn">4</a>
-      <a routerLink="/book/lastpage" routerLinkActive="active" class="btn">5</a>
-</nav>
 `,
   styles: [`img {
     height: 216px;
@@ -34,15 +26,8 @@ import { Component, OnInit } from '@angular/core';
     margin-right: 10px;
     border-radius: 16px;
   }
-  
   header {
     display: flex;
-  }
-  a {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
   }
   `]
 })

@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-third-page',
-  template: `<h1>WH School</h1>
-  <hr>
+  template: `
   <div>
   <header>
       <h2>Main heading</h2>
@@ -21,14 +20,7 @@ import { Component, OnInit } from '@angular/core';
       <img src="https://via.placeholder.com/238x216" alt="">
   </div>
   </main>
-</div>
-<nav class="nav-book">
-      <a routerLink="/book/titlepage" routerLinkActive="active" class="btn">1</a>
-      <a routerLink="/book/firstpage" routerLinkActive="active" class="btn">2</a>
-      <a routerLink="/book/secondpage" routerLinkActive="active" class="btn">3</a>
-      <a routerLink="/book/thirdpage" routerLinkActive="active" class="btn">4</a>
-      <a routerLink="/book/lastpage" routerLinkActive="active" class="btn">5</a>
-</nav>`,
+</div>`,
   styles: [`img {
     height: 216px;
     width: 238px;
@@ -37,12 +29,6 @@ import { Component, OnInit } from '@angular/core';
   }
   main {
     display: flex;
-  }
-  a {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
   }
   `]
 })

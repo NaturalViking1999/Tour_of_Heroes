@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-title-page',
-  template: `<h1>WH School</h1>
-  <hr>
+  template: `
   <div>
   <header>
       <div>
@@ -20,14 +19,7 @@ import { Component, OnInit } from '@angular/core';
       <p>Разнообразный и богатый опыт постоянное информационно-пропагандистское обеспечение нашей деятельности влечет за собой процесс внедрения и модернизации систем массового участия. С другой стороны рамки и место обучения кадров представляет собой интересный эксперимент проверки соответствующий условий активизации.</p>
       <p>Задача организации, в особенности же укрепление и развитие структуры играет важную роль в формировании модели развития. Таким образом реализация намеченных плановых заданий способствует подготовки и реализации системы обучения кадров, соответствует насущным потребностям. </p>
   </main>
-</div>
-<nav class="nav-book">
-      <a routerLink="/book/titlepage" routerLinkActive="active" class="btn">1</a>
-      <a routerLink="/book/firstpage" routerLinkActive="active" class="btn">2</a>
-      <a routerLink="/book/secondpage" routerLinkActive="active" class="btn">3</a>
-      <a routerLink="/book/thirdpage" routerLinkActive="active" class="btn">4</a>
-      <a routerLink="/book/lastpage" routerLinkActive="active" class="btn">5</a>
-</nav>`,
+</div>`,
   styles: [`img {
     height: 216px;
     width: 238px;
@@ -35,12 +27,6 @@ import { Component, OnInit } from '@angular/core';
   }
   header {
     display: flex;
-  }
-  a {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
   }
   `]
 })
