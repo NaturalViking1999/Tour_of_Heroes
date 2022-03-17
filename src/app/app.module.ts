@@ -15,6 +15,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { MessagesComponent } from './messages/messages.component';
 import { FenceCasePipe } from './fenceCase.pipe';
 import { AuthModule } from './auth/auth.module';
+import { BookModule } from './book/book.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AuthModule } from './auth/auth.module';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
-    AuthModule
+    AuthModule,
+    BookModule
   ],
   providers: [HeroServiceService2],
   bootstrap: [AppComponent]
