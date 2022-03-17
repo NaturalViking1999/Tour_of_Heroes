@@ -6,13 +6,11 @@ import { SecondPageComponent } from './second-page/second-page.component';
 import { ThirdPageComponent } from './third-page/third-page.component';
 import { LastPageComponent } from './last-page/last-page.component';
 import { BookRoutingModule } from './book-routing.module';
-import { HeadComponent } from './head.component';
 
 
 
 @NgModule({
   declarations: [
-    HeadComponent,
     TitlePageComponent,
     FirstPageComponent,
     SecondPageComponent,
@@ -24,7 +22,6 @@ import { HeadComponent } from './head.component';
     BookRoutingModule
   ],
   exports: [
-    HeadComponent,
     TitlePageComponent,
     FirstPageComponent,
     SecondPageComponent,
