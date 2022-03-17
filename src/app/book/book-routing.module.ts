@@ -9,7 +9,7 @@ import { TitlePageComponent } from './title-page/title-page.component';
 
 export const routesBook: Routes = [
   { path: '', component: BookComponent, children: [
-    // { path: '', redirectTo: '/titlepage', pathMatch: 'full'},
+    { path: '', redirectTo: '/titlepage', pathMatch: 'full'},
     { path: 'titlepage', component: TitlePageComponent},
     { path: 'firstpage', component: FirstPageComponent},
     { path: 'secondpage', component: SecondPageComponent},

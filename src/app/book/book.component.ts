@@ -9,11 +9,11 @@ import { AfterViewChecked, Component, OnInit } from '@angular/core';
 export class BookComponent implements OnInit {
 
   ngOnInit(): void {
-    this.goToTitlePage()
+    // this.goToTitlePage()
   }
 
-  goToTitlePage() {
-    if (window.location.href === "http://localhost:4200/book")
-    window.location.replace("http://localhost:4200/book/titlepage")
-  }
+  // goToTitlePage() {
+  //   if (window.location.href === "http://localhost:4200/book")
+  //   window.location.href = "http://localhost:4200/book/titlepage"
+  // }
 }
