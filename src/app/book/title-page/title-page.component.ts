@@ -24,6 +24,7 @@ import { Component, OnInit } from '@angular/core';
     height: 216px;
     width: 238px;
     margin-right: 10px;
+    border-radius: 16px;
   }
   header {
     display: flex;

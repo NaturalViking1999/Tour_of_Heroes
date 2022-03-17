@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewChecked, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-book',
@@ -6,4 +6,14 @@ import { Component } from '@angular/core';
   <router-outlet></router-outlet>
   <app-nav></app-nav>`
 })
-export class BookComponent {}
+export class BookComponent implements OnInit {
+
+  ngOnInit(): void {
+    this.goToTitlePage()
+  }
+
+  goToTitlePage() {
+    if (window.location.href === "http://localhost:4200/book")
+    window.location.replace("http://localhost:4200/book/titlepage")
+  }
+}

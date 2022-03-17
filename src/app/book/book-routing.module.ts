@@ -8,8 +8,8 @@ import { ThirdPageComponent } from './third-page/third-page.component';
 import { TitlePageComponent } from './title-page/title-page.component';
 
 export const routesBook: Routes = [
-  { path: '', redirectTo: '/titlepage', pathMatch: 'full'},
   { path: '', component: BookComponent, children: [
+    // { path: '', redirectTo: '/titlepage', pathMatch: 'full'},
     { path: 'titlepage', component: TitlePageComponent},
     { path: 'firstpage', component: FirstPageComponent},
     { path: 'secondpage', component: SecondPageComponent},
