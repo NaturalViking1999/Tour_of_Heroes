@@ -4,6 +4,7 @@ import { BookComponent } from './book.component';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { LastPageComponent } from './last-page/last-page.component';
 import { SecondPageComponent } from './second-page/second-page.component';
+import { TableBooksComponent } from './table-books/table-books.component';
 import { ThirdPageComponent } from './third-page/third-page.component';
 import { TitlePageComponent } from './title-page/title-page.component';
 
@@ -14,7 +15,8 @@ export const routesBook: Routes = [
     { path: 'firstpage', component: FirstPageComponent},
     { path: 'secondpage', component: SecondPageComponent},
     { path: 'thirdpage', component: ThirdPageComponent},
-    { path: 'lastpage', component: LastPageComponent}
+    { path: 'lastpage', component: LastPageComponent},
+    { path: 'tablebooks', component: TableBooksComponent}
   ]},
 ];
 

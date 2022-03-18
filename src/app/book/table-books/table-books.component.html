@@ -1,0 +1,31 @@
+<div class="table">
+
+<table *ngIf="!toggle"
+class="mat-elevation-z8">
+  <tbody>
+    <div>
+      <tr><th>№</th><th>Book's Title</th></tr>
+      <tr *ngFor="let book of books.data" (click)="[onSelect(book), toggle = !toggle]" 
+      [class.selected]="book === selectedBook">
+        <td>{{book.id}}.</td>
+        <td> {{book.title}}.</td>
+      </tr>
+    </div>
+    <div>
+      <tr><th>Release date</th><th>Released</th></tr>
+      <tr *ngFor="let item of info.data">
+        <td>{{item.releaseDate}}</td>
+        <td> {{item.qtyRelease}}</td>
+      </tr>
+    </div>
+  </tbody>
+  <tr id="total">Total released books: {{info.data[0].qtyRelease + info.data[1].qtyRelease + info.data[2].qtyRelease + info.data[3].qtyRelease + info.data[4].qtyRelease + info.data[5].qtyRelease}}</tr>
+</table>
+
+<div class="book-info" *ngIf="toggle">
+    <h2>Description</h2>
+    <p>{{selectedBook.description}}</p>
+    <button mat-raised-button color="primary" (click)="[toggle = !toggle]">Back</button>
+</div>
+
+</div>

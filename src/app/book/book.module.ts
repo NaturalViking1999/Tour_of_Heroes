@@ -9,8 +9,9 @@ import { BookRoutingModule } from './book-routing.module';
 import { HeaderComponent } from './header';
 import { NavComponent } from './nav';
 import { BookComponent } from './book.component';
-
-
+import { TableBooksComponent } from './table-books/table-books.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -21,21 +22,14 @@ import { BookComponent } from './book.component';
     LastPageComponent,
     HeaderComponent,
     NavComponent,
-    BookComponent
+    BookComponent,
+    TableBooksComponent
   ],
   imports: [
     CommonModule,
-    BookRoutingModule
-  ],
-  exports: [
-    TitlePageComponent,
-    FirstPageComponent,
-    SecondPageComponent,
-    ThirdPageComponent,
-    LastPageComponent,
-    HeaderComponent,
-    NavComponent,
-    BookComponent
+    BookRoutingModule,
+    MatTableModule,
+    MatButtonModule
   ]
 })
 export class BookModule { }

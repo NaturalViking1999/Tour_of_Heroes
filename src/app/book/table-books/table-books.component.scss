@@ -1,0 +1,79 @@
+table {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(70, 107, 215, 1) 27%,
+    rgba(134, 215, 209, 1) 44%,
+    rgba(185, 220, 243, 1) 63%,
+    rgba(160, 135, 210, 1) 85%,
+    rgba(144, 200, 236, 1) 100%
+  );
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 25px;
+  text-shadow: 2px 2px 4px gray;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+tbody {
+  display: flex;
+}
+
+td,
+th {
+  margin: 5px 0 5px 0;
+  padding: 10px;
+  border-style: solid;
+  border-width: 0 1px 1px 0;
+  border-color: white;
+  border-right: none;
+  border-left: none;
+}
+
+td:hover {
+  color: red;
+}
+
+th {
+  font-size: 30px;
+  text-align: left;
+}
+
+.table {
+  display: flex;
+  justify-content: center;
+  margin: 20px 20px 100px 20px;
+}
+
+#total {
+  text-align: center;
+  margin: 10px;
+}
+
+.book-info {
+  background: rgb(240, 213, 169);
+  background: linear-gradient(
+    90deg,
+    rgba(240, 213, 169, 1) 0%,
+    rgba(229, 239, 183, 1) 22%,
+    rgba(208, 240, 223, 1) 39%,
+    rgba(204, 240, 230, 1) 50%,
+    rgba(240, 213, 235, 1) 72%,
+    rgba(237, 241, 241, 1) 100%
+  );
+  padding: 20px;
+  border-radius: 20px;
+  font-size: 20px;
+  line-height: 25px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.book-info button {
+  width: 150px;
+  margin-left: 380px;
+}
