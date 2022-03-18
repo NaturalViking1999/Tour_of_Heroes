@@ -22,12 +22,12 @@ export class TableBooksComponent implements OnInit {
 
   getBooks() {
     this.booksService.getBooks()
-    .subscribe(items => this.books = items.set1);
+    .subscribe(items => this.books = items);
   }
 
   getBooks2() {
-    this.booksService.getBooks()
-    .subscribe(items => this.info = items.set2);
+    this.booksService.getBooks2()
+    .subscribe(items => this.info = items);
   }
 
   onSelect(book: {}) { 
