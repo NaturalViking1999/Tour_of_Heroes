@@ -43,9 +43,8 @@ export class TableBooksComponent implements OnInit, OnDestroy {
     })
   }
 
-  onSelect(book: Book, event: any): void { 
+  onSelect(book: Book): void { 
     this.selectedBook = book;
-    event.path[0].classList.remove('display')
   }
   
 }

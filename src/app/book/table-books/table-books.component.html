@@ -2,16 +2,16 @@
 
 <table>
     <div>
-      <tr><th>№</th><th>Book's Title</th><th>Release date</th><th>Released</th></tr>
-      <tr *ngFor="let book of bookInfo; let i = index" (click)="[onSelect(book, $event), toggle = !toggle]" 
+      <tr><th>№</th><th>Book's Title</th><th *ngIf="!toggle">Release date</th><th *ngIf="!toggle">Released</th></tr>
+      <tr *ngFor="let book of bookInfo; let i = index" (click)="[onSelect(book), toggle = !toggle]" 
       [class.selected]="book === selectedBook">
         <td>{{book.id}}.</td>
         <td>
           <div id="td">{{book.title}}.</div>
           <div class="book-info" *ngIf="toggle && selectedBook.id == i+1">{{book.description}}</div>
         </td>
-        <td>{{book.releaseDate}}</td>
-        <td> {{book.qtyRelease}}</td>
+        <td *ngIf="!toggle">{{book.releaseDate}}</td>
+        <td *ngIf="!toggle"> {{book.qtyRelease}}</td>
       </tr>
     </div>
   <p id="total">Total released books: {{bookInfo[0].qtyRelease + bookInfo[1].qtyRelease + bookInfo[2].qtyRelease + bookInfo[3].qtyRelease + bookInfo[4].qtyRelease + bookInfo[5].qtyRelease}}</p>
