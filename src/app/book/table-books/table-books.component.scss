@@ -52,28 +52,19 @@ th {
 }
 
 .book-info {
-  background: rgb(240, 213, 169);
+  background: rgb(190, 156, 247);
   background: linear-gradient(
     90deg,
-    rgba(240, 213, 169, 1) 0%,
-    rgba(229, 239, 183, 1) 22%,
-    rgba(208, 240, 223, 1) 39%,
-    rgba(204, 240, 230, 1) 50%,
-    rgba(240, 213, 235, 1) 72%,
+    rgba(190, 156, 247, 1) 0%,
+    rgba(176, 188, 246, 1) 24%,
+    rgba(213, 196, 244, 1) 49%,
+    rgba(227, 164, 222, 1) 71%,
     rgba(237, 241, 241, 1) 100%
   );
+  border-top: 0.5px solid grey;
+  border-bottom: 0.5px solid grey;
   padding: 20px;
-  border-radius: 20px;
   font-size: 20px;
   line-height: 25px;
-}
-
-h2 {
-  text-align: center;
-  font-size: 30px;
-}
-
-.book-info button {
-  width: 150px;
-  margin-left: 380px;
+  margin: 20px 0 20px 0;
 }

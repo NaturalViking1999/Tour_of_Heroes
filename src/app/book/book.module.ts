@@ -12,6 +12,7 @@ import { BookComponent } from './book.component';
 import { TableBooksComponent } from './table-books/table-books.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MatButtonModule} from '@angular/material/button';
     CommonModule,
     BookRoutingModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ]
 })
 export class BookModule { }

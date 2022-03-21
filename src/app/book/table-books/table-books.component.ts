@@ -12,6 +12,7 @@ export class TableBooksComponent implements OnInit, OnDestroy {
   toggle: boolean = false;
   selectedBook!: Book;
   bookInfo: any = [];
+  expandedElement: Book | null = null;
 
   myStream$: Subscription = new Subscription();
 
@@ -34,14 +35,17 @@ export class TableBooksComponent implements OnInit, OnDestroy {
       secondStream: this.booksService.getBooks2()
     })
     .subscribe( ({firstStream, secondStream}) => {
-      this.bookInfo.push(firstStream);
-      this.bookInfo.push(secondStream);
-      // console.log(firstStream)
+      firstStream.forEach(item => secondStream.forEach(item2 => {
+        if(item['id'] === item2['id']) {
+          this.bookInfo.push(Object.assign({}, item, item2))
+        }
+      }))
     })
   }
 
-
-  onSelect(book: Book): void { 
+  onSelect(book: Book, event: any): void { 
     this.selectedBook = book;
+    event.path[0].classList.remove('display')
   }
+  
 }

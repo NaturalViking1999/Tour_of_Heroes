@@ -1,31 +1,19 @@
 <div class="table">
 
-<table *ngIf="!toggle"
-class="mat-elevation-z8">
-  <tbody >
+<table>
     <div>
-      <tr><th>№</th><th>Book's Title</th></tr>
-      <tr *ngFor="let book of bookInfo[0]" (click)="[onSelect(book), toggle = !toggle]" 
+      <tr><th>№</th><th>Book's Title</th><th>Release date</th><th>Released</th></tr>
+      <tr *ngFor="let book of bookInfo; let i = index" (click)="[onSelect(book, $event), toggle = !toggle]" 
       [class.selected]="book === selectedBook">
         <td>{{book.id}}.</td>
-        <td id="td"> {{book.title}}.</td>
+        <td>
+          <div id="td">{{book.title}}.</div>
+          <div class="book-info" *ngIf="toggle && selectedBook.id == i+1">{{book.description}}</div>
+        </td>
+        <td>{{book.releaseDate}}</td>
+        <td> {{book.qtyRelease}}</td>
       </tr>
     </div>
-    <div>
-      <tr><th>Release date</th><th>Released</th></tr> 
-      <tr *ngFor="let item of bookInfo[1]">
-        <td>{{item.releaseDate}}</td>
-        <td> {{item.qtyRelease}}</td>
-      </tr>
-    </div>
-  </tbody>
-  <p id="total">Total released books: {{bookInfo[1][0].qtyRelease + bookInfo[1][1].qtyRelease + bookInfo[1][2].qtyRelease + bookInfo[1][3].qtyRelease + bookInfo[1][4].qtyRelease + bookInfo[1][5].qtyRelease}}</p>
+  <p id="total">Total released books: {{bookInfo[0].qtyRelease + bookInfo[1].qtyRelease + bookInfo[2].qtyRelease + bookInfo[3].qtyRelease + bookInfo[4].qtyRelease + bookInfo[5].qtyRelease}}</p>
 </table>
-
-<div class="book-info" *ngIf="toggle">
-    <h2>Description</h2>
-    <p>{{selectedBook.description}}</p>
-    <button mat-raised-button color="primary" (click)="[toggle = !toggle]">Back</button>
-</div>
-
 </div>
