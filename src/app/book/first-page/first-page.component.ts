@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-first-page',
@@ -31,11 +31,4 @@ import { Component, OnInit } from '@angular/core';
   }
   `]
 })
-export class FirstPageComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class FirstPageComponent {}

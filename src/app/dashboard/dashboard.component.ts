@@ -5,7 +5,23 @@ import { HeroServiceService2 } from '../hero.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styles: [`
+  .dashboard {
+    display: flex;
+  }
+  
+  li {
+    padding: 20px 30px;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .hero-info input {
+    margin-left: 10px;
+    width: 200px;
+  }`]
 })
 export class DashboardComponent implements OnInit {
 

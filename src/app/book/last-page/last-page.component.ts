@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-last-page',
@@ -30,11 +30,4 @@ import { Component, OnInit } from '@angular/core';
     display: flex;
   }`]
 })
-export class LastPageComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class LastPageComponent {}

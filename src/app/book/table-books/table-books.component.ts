@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { forkJoin, Subscription } from 'rxjs';
+import { Book } from '../book.interfaces';
 import { BooksService } from '../books.service';
 
 @Component({
@@ -6,40 +8,40 @@ import { BooksService } from '../books.service';
   templateUrl: './table-books.component.html',
   styleUrls: ['./table-books.component.scss']
 })
-export class TableBooksComponent implements OnInit {
-  books!: any;
-  info!: any;
+export class TableBooksComponent implements OnInit, OnDestroy {
   toggle: boolean = false;
-  selectedBook!: any;
-  sum: number = 0;
+  selectedBook!: Book;
+  bookInfo: any = [];
+
+  myStream$: Subscription = new Subscription();
 
   constructor(private booksService: BooksService) { }
 
   ngOnInit(): void {
     this.getBooks()
-    this.getBooks2()
   }
 
-  getBooks() {
-    this.booksService.getBooks()
-    .subscribe(items => this.books = items);
-  }
-
-  getBooks2() {
-    this.booksService.getBooks2()
-    .subscribe(items => this.info = items);
-  }
-
-  onSelect(book: {}) { 
-    this.selectedBook = book; 
-  }
-
-  getSum() {
-    for (let item of this.info.data) {
-      this.sum += item.qtyRelease
+  ngOnDestroy(): void {
+    if(this.myStream$) {
+      this.myStream$.unsubscribe();
+      // console.log(this.myStream$)
     }
   }
 
-}
+  getBooks(): void {
+    this.myStream$ = forkJoin({ 
+      firstStream: this.booksService.getBooks(), 
+      secondStream: this.booksService.getBooks2()
+    })
+    .subscribe( ({firstStream, secondStream}) => {
+      this.bookInfo.push(firstStream);
+      this.bookInfo.push(secondStream);
+      // console.log(firstStream)
+    })
+  }
 
-// this.books = Object.values(items).map(item => item)
+
+  onSelect(book: Book): void { 
+    this.selectedBook = book;
+  }
+}

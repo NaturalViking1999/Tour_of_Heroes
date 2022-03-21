@@ -2,24 +2,24 @@
 
 <table *ngIf="!toggle"
 class="mat-elevation-z8">
-  <tbody>
+  <tbody >
     <div>
       <tr><th>№</th><th>Book's Title</th></tr>
-      <tr *ngFor="let book of books.data" (click)="[onSelect(book), toggle = !toggle]" 
+      <tr *ngFor="let book of bookInfo[0]" (click)="[onSelect(book), toggle = !toggle]" 
       [class.selected]="book === selectedBook">
         <td>{{book.id}}.</td>
-        <td> {{book.title}}.</td>
+        <td id="td"> {{book.title}}.</td>
       </tr>
     </div>
     <div>
-      <tr><th>Release date</th><th>Released</th></tr>
-      <tr *ngFor="let item of info.data">
+      <tr><th>Release date</th><th>Released</th></tr> 
+      <tr *ngFor="let item of bookInfo[1]">
         <td>{{item.releaseDate}}</td>
         <td> {{item.qtyRelease}}</td>
       </tr>
     </div>
   </tbody>
-  <p id="total">Total released books: {{info.data[0].qtyRelease + info.data[1].qtyRelease + info.data[2].qtyRelease + info.data[3].qtyRelease + info.data[4].qtyRelease + info.data[5].qtyRelease}}</p>
+  <p id="total">Total released books: {{bookInfo[1][0].qtyRelease + bookInfo[1][1].qtyRelease + bookInfo[1][2].qtyRelease + bookInfo[1][3].qtyRelease + bookInfo[1][4].qtyRelease + bookInfo[1][5].qtyRelease}}</p>
 </table>
 
 <div class="book-info" *ngIf="toggle">

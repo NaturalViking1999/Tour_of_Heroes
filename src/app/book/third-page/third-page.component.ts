@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-third-page',
@@ -32,11 +32,4 @@ import { Component, OnInit } from '@angular/core';
   }
   `]
 })
-export class ThirdPageComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class ThirdPageComponent {}

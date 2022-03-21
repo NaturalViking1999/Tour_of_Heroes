@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-second-page',
@@ -20,11 +20,4 @@ import { Component, OnInit } from '@angular/core';
   }`
 ]
 })
-export class SecondPageComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class SecondPageComponent {}
