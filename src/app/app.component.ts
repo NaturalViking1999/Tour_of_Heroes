@@ -29,9 +29,7 @@ import { Component } from '@angular/core';
     padding: 10px 0 10px 0;
     font-weight: bold;
     font-size: 50px;
-  }
-  #block {
-    display: block;
+    diplay: block;
   }`]
 })
 export class AppComponent {
