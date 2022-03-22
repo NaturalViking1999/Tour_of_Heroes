@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   <div class="container">
   <h1 appTextModificator>{{title | fencecase}}</h1>
   <h3 appTextModificatorHost>My Heroes are the best Heroes!</h3>
-  <p id="animate" class="anim-text-flow" appRainbowTextAnimation><span>
+  <p id="animate" appRainbowTextAnimation><span>
   Animation for Sergey
   </span></p>
  
