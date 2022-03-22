@@ -4,7 +4,11 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
   <div class="container">
-  <h1>{{title | fencecase}}</h1>
+  <h1 appTextModificator>{{title | fencecase}}</h1>
+  <h3 appTextModificatorHost>My Heroes are the best Heroes!</h3>
+  <p id="animate"><span id="block" appRainbowTextAnimation>
+  <span>A</span><span>N</span><span>I</span><span>M</span><span>A</span><span>T</span><span>I</span><span>O</span><span>N</span>
+  </span></p>
  
 <div class="nav">
   <nav>
@@ -21,7 +25,14 @@ import { Component } from '@angular/core';
   .nav nav {
     margin-bottom: 30px;
   }
-  `]
+  #animate {
+    padding: 10px 0 10px 0;
+    font-weight: bold;
+    font-size: 50px;
+  }
+  #block {
+    display: block;
+  }`]
 })
 export class AppComponent {
   public title: string = 'Tour  of  Heroes';

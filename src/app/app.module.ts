@@ -16,6 +16,9 @@ import { MessagesComponent } from './messages/messages.component';
 import { FenceCasePipe } from './fenceCase.pipe';
 import { AuthModule } from './auth/auth.module';
 import { BookModule } from './book/book.module';
+import { TextModificatorDirective } from './directives/text-modificator.directive';
+import { TextModificatorHostDirective } from './directives/text-modificator-host.directive';
+import { RainbowTextAnimationDirective } from './directives/rainbow-text-animation.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { BookModule } from './book/book.module';
     DashboardComponent,
     HeroesComponent,
     MessagesComponent,
-    FenceCasePipe
+    FenceCasePipe,
+    TextModificatorDirective,
+    TextModificatorHostDirective,
+    RainbowTextAnimationDirective
   ],
   imports: [
     BrowserModule,
