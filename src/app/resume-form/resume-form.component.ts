@@ -41,8 +41,8 @@ export class ResumeFormComponent implements OnInit {
   ngOnInit(): void {
     this.form = new FormGroup({
       email: new FormControl('', [Validators.email]),
-      surname: new FormControl('', [Validators.required, CheckCyrillicValidator.checkCyrillic]),
-      firstname: new FormControl('', [Validators.required, CheckCyrillicValidator.checkCyrillic]),
+      surname: new FormControl('', [CheckCyrillicValidator.checkCyrillic]),
+      firstname: new FormControl('', [CheckCyrillicValidator.checkCyrillic]),
       middlename: new FormControl('', [CheckCyrillicValidator.checkCyrillicForMiddleName]),
       percs: new FormControl('', [Validators.required])
     })
