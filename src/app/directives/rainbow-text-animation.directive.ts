@@ -9,10 +9,10 @@ export class RainbowTextAnimationDirective {
   constructor( private el: ElementRef ) { }
 
   @HostListener('mouseenter', ['$event']) onEnter(event: any) {
-    if(!event.path[0].classList.contains('anim-text-flow')) {
-      event.path[0].classList.add('anim-text-flow');
+    if(!this.el.nativeElement.classList.contains('anim-text-flow')) {
+      this.el.nativeElement.classList.add('anim-text-flow');
     }
-    this.textDefault = event.path[0].textContent;
+    this.textDefault = this.el.nativeElement.textContent;
     let span = document.createElement('span');
     let chars = this.el.nativeElement.textContent.trim().split("");
     chars.map((item: string) => {

@@ -1,0 +1,78 @@
+<div class="head">
+
+<div class="div-form">
+    <h2>Форма резюме</h2>
+    <p class="small">Обязательные поля отмечены звездочкой *</p>
+    <form [formGroup]="form" (ngSubmit)="submit($event)">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Фамилия</mat-label>
+            <input matInput type="text" placeholder="Введите фамилию" formControlName="surname">
+            <small ></small>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Имя</mat-label>
+            <input matInput type="text" placeholder="Введите имя" formControlName="firstname">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Отчество</mat-label>
+            <input matInput type="text" placeholder="Введите отчество" formControlName="middlename">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" placeholder="Введите email" formControlName="email">
+        </mat-form-field>
+        <mat-form-field class="example-chip-list" appearance="fill">
+            <mat-label>Умения</mat-label>
+            <mat-chip-list #chipList aria-label="Fruit selection">
+              <mat-chip *ngFor="let perc of percs" (removed)="remove(perc)">
+                {{perc}}
+                <button matChipRemove>
+                  <p>x</p>
+                </button>
+              </mat-chip>
+              <input placeholder="Введите ваши умения"
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="add($event)"
+                     formControlName="percs">
+            </mat-chip-list>
+          </mat-form-field>
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Отправить форму</button>
+            <button mat-raised-button color="accent" type="button" (click)="clear()">Сбросить форму</button>
+    </form>
+</div>
+
+<hr style="width: 1px; height: 530px; border: none; background-color: grey;" *ngIf="surname.length > 0">
+
+<div class="resume" *ngIf="surname.length > 0">
+    <h2 style="margin-bottom: 20px;">Ваше резюме</h2>
+    <small style="color: green; text-align: center; display: block; margin-bottom: 20px;">Данные, введённые вами в форме</small>
+    <div>
+        <small>Ваша фамилия</small>
+        <p class="data">{{surname}}</p>
+    </div>
+    <div>
+        <small>Ваше имя</small>
+        <p class="data">{{firstname}}</p>
+    </div>
+    <div>
+        <small>Ваше отчество</small>
+        <p class="data">{{middlename}}</p>
+    </div>
+    <div>
+        <small>Ваш email</small>
+        <p class="data">{{email}}</p>
+    </div>
+    <div>
+        <small>Ваши умения</small>
+        <mat-chip-list #chipList style="display: flex; flex-wrap: wrap;">
+            <mat-chip *ngFor="let perc of percs" style="display: flex; color: blue;">
+                <p>{{perc}}</p>
+                <!-- <button matChipRemove (click)="deletePerc(perc)">x</button> -->
+            </mat-chip>
+        </mat-chip-list>
+    </div>
+</div>
+
+</div>

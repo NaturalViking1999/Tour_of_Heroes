@@ -5,13 +5,15 @@ import { routesBook } from './book/book-routing.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { ResumeFormComponent } from './resume-form/resume-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/auth', pathMatch: 'full'},
   { path: 'dashboard', component: DashboardComponent},
   { path: 'heroes', component: HeroesComponent},
   { path: 'auth', component: AuthComponent},
-  { path: 'book', children: [...routesBook] }
+  { path: 'book', children: [...routesBook] },
+  { path: 'resume', component: ResumeFormComponent},
 ];
 
 @NgModule({
