@@ -23,7 +23,7 @@
         </mat-form-field>
         <mat-form-field class="example-chip-list" appearance="fill">
             <mat-label>Умения</mat-label>
-            <mat-chip-list #chipList aria-label="Fruit selection">
+            <mat-chip-list #chipList>
               <mat-chip *ngFor="let perc of percs" (removed)="remove(perc)">
                 {{perc}}
                 <button matChipRemove>
@@ -32,7 +32,6 @@
               </mat-chip>
               <input placeholder="Введите ваши умения"
                      [matChipInputFor]="chipList"
-                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                      [matChipInputAddOnBlur]="addOnBlur"
                      (matChipInputTokenEnd)="add($event)"
                      formControlName="percs">

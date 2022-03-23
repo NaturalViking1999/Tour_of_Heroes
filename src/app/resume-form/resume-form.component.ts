@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CheckCyrillicValidator } from '../validators/checkCyrilic.validator';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
@@ -18,7 +17,6 @@ export class ResumeFormComponent implements OnInit {
   percs: string[] = ['жизнерадостность', 'заинтересованность', 'интеллект'];
   
   addOnBlur = true;
-  readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
   add(event: MatChipInputEvent): void {
     const value = event.value.trim();
