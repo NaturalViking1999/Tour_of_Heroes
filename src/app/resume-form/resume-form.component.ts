@@ -61,6 +61,7 @@ export class ResumeFormComponent implements OnInit {
 
   clear() {
     this.form.reset()
+    this.percs.splice(3)
   }
 
   // deletePerc(perc: string) {
