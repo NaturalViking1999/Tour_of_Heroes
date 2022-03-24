@@ -24,7 +24,7 @@
         <mat-form-field class="example-chip-list" appearance="fill">
             <mat-label>Умения</mat-label>
             <mat-chip-list #chipList>
-              <mat-chip *ngFor="let perc of percs" (removed)="remove(perc)">
+              <mat-chip *ngFor="let perc of myPercs.value; let i = index" (removed)="remove(i)">
                 {{perc}}
                 <button matChipRemove>
                   <p>x</p>
@@ -33,8 +33,7 @@
               <input placeholder="Введите ваши умения"
                      [matChipInputFor]="chipList"
                      [matChipInputAddOnBlur]="addOnBlur"
-                     (matChipInputTokenEnd)="add($event)"
-                     formControlName="percs">
+                     (matChipInputTokenEnd)="add($event)">
             </mat-chip-list>
           </mat-form-field>
             <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Отправить форму</button>
@@ -66,9 +65,8 @@
     <div>
         <small>Ваши умения</small>
         <mat-chip-list #chipList style="display: flex; flex-wrap: wrap;">
-            <mat-chip *ngFor="let perc of percs" style="display: flex; color: blue;">
+            <mat-chip *ngFor="let perc of myPercs.value" style="display: flex; color: blue;">
                 <p>{{perc}}</p>
-                <!-- <button matChipRemove (click)="deletePerc(perc)">x</button> -->
             </mat-chip>
         </mat-chip-list>
     </div>

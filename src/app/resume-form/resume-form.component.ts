@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormControlDirective, FormGroup, Validators } from '@angular/forms';
 import { CheckCyrillicValidator } from '../validators/checkCyrilic.validator';
 import { MatChipInputEvent } from '@angular/material/chips';
 
@@ -14,29 +14,9 @@ export class ResumeFormComponent implements OnInit {
   firstname: string = '';
   middlename: string = '';
   email: string = '';
-  percs: string[] = ['жизнерадостность', 'заинтересованность', 'интеллект'];
-  
-  addOnBlur = true;
+  readonly percs: string[] = ['жизнерадостность', 'заинтересованность', 'интеллект'];
 
-  add(event: MatChipInputEvent): void {
-    const value = event.value.trim();
-
-    // Add our fruit
-    if (value.length > 0 && !this.percs.includes(value)) {
-      this.percs.push(value);
-    }
-
-    // Clear the input value
-    event.chipInput!.clear();
-  }
-
-  remove(perc: string): void {
-    const index = this.percs.indexOf(perc);
-
-    if (index >= 0) {
-      this.percs.splice(index, 1);
-    }
-  }
+  addOnBlur: boolean = true;
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -44,8 +24,13 @@ export class ResumeFormComponent implements OnInit {
       surname: new FormControl('', [CheckCyrillicValidator.checkCyrillic]),
       firstname: new FormControl('', [CheckCyrillicValidator.checkCyrillic]),
       middlename: new FormControl('', [CheckCyrillicValidator.checkCyrillicForMiddleName]),
-      percs: new FormControl('', [Validators.required])
+      percsArray: new FormArray(this.percs.map(el => new FormControl(el)))
     })
+    console.log(this.myPercs);
+  }
+
+  get myPercs() {
+    return this.form.get('percsArray') as FormArray;
   }
 
   submit(event: any) {
@@ -54,18 +39,26 @@ export class ResumeFormComponent implements OnInit {
     this.firstname = event.path[0][1].value;
     this.middlename = event.path[0][2].value;
     this.email = event.path[0][3].value;
-    // if (!this.percs.includes(event.path[0][4].value)) {
-    //   this.percs.push(event.path[0][4].value);
-    // }
   }
 
   clear() {
-    this.form.reset()
-    this.percs.splice(3)
+    this.form.reset();
+    this.myPercs.patchValue(this.percs)
+    this.myPercs.value.splice(3);
   }
 
-  // deletePerc(perc: string) {
-  //   this.percs.splice(this.percs.findIndex(item => item === perc), 1)
-  // }
+  add(event: MatChipInputEvent): void {
+    const eValue = event.value.trim();
+
+    if (eValue.length > 0 && !this.myPercs.value.includes(eValue.toLowerCase())) {
+      this.myPercs.push(new FormControl(eValue));
+    }
+
+    event.chipInput!.clear();
+  }
+
+  remove(i: number): void {
+      this.myPercs.value.splice(i, 1);
+  }
 
 }

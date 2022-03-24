@@ -3,7 +3,7 @@ import { AbstractControl, ValidationErrors } from "@angular/forms";
 export class CheckCyrillicValidator {
     
     static checkCyrillic(control: AbstractControl): ValidationErrors | null {
-        if (/[а-я]/i.test(control.value) !== true) {
+        if (/[а-яё]/i.test(control.value) !== true) {
             return {value: true}
         }
         return null
@@ -13,7 +13,7 @@ export class CheckCyrillicValidator {
         if (control.value === '') {
             return null
         }
-        else if (/[а-я]/i.test(control.value) !== true) {
+        else if (/[а-яё]/i.test(control.value) !== true) {
             return {value: true}
         }
         return null
