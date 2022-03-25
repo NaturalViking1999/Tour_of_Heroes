@@ -43,8 +43,8 @@ export class ResumeFormComponent implements OnInit {
 
   clear() {
     this.form.reset();
-    this.myPercs.patchValue(this.percs)
-    this.myPercs.value.splice(3);
+    this.myPercs.controls.splice(3);
+    this.myPercs.patchValue(this.percs);
   }
 
   add(event: MatChipInputEvent): void {

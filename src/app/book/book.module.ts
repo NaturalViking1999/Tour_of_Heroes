@@ -10,9 +10,11 @@ import { HeaderComponent } from './header';
 import { NavComponent } from './nav';
 import { BookComponent } from './book.component';
 import { TableBooksComponent } from './table-books/table-books.component';
-import {MatTableModule} from '@angular/material/table';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BookChartComponent, BookChartDialog } from './book-chart/book-chart.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +26,17 @@ import {MatCardModule} from '@angular/material/card';
     HeaderComponent,
     NavComponent,
     BookComponent,
-    TableBooksComponent
+    TableBooksComponent,
+    BookChartComponent,
+    BookChartDialog
   ],
   imports: [
     CommonModule,
     BookRoutingModule,
     MatTableModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ]
 })
 export class BookModule { }
