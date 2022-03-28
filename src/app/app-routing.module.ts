@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthComponent } from './auth/auth/auth.component';
-import { routesBook } from './book/book-routing.module';
+import { AuthComponent } from './components/auth/auth/auth.component';
+import { routesBook } from './components/book/book-routing.module';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { ResumeFormComponent } from './resume-form/resume-form.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HeroesComponent } from './components/heroes/heroes.component';
+import { ResumeFormComponent } from './components/resume-form/resume-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/auth', pathMatch: 'full'},

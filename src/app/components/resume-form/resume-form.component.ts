@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormControlDirective, FormGroup, Validators } from '@angular/forms';
-import { CheckCyrillicValidator } from '../validators/checkCyrilic.validator';
+import { CheckCyrillicValidator } from '../../validators/checkCyrilic.validator';
 import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({

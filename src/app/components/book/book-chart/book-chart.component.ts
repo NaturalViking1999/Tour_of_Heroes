@@ -27,12 +27,14 @@ export class BookChartComponent {
 
 @Component({
   selector: `app-book-chart-dialog`,
-  template: `<div mat-dialog-content>
+  template: `<ng-container>
+  <div mat-dialog-content>
   <canvas class="myChart" width="500" height="300" #canvas></canvas>
   </div>
   <div mat-dialog-actions>
     <button mat-raised-button style="margin: 0 auto; padding: 0 20px 0 20px; font-size: 20px" color="primary" (click)="onNoClick()">Close window</button>
-  </div>`
+  </div>
+  </ng-container>`
 })
 export class BookChartDialog implements OnInit, AfterViewInit, AfterViewChecked {
   @ViewChild('canvas') canvas!: ElementRef;

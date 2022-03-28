@@ -13,6 +13,7 @@ export class TableBooksComponent implements OnInit, OnDestroy {
   selectedBook!: Book;
   bookInfo: any = [];
   expandedElement: Book | null = null;
+  sum: number = 0;
 
   myStream$: Subscription = new Subscription();
 
@@ -37,7 +38,8 @@ export class TableBooksComponent implements OnInit, OnDestroy {
     .subscribe( ({firstStream, secondStream}) => {
       firstStream.forEach(item => secondStream.forEach(item2 => {
         if(item['id'] === item2['id']) {
-          this.bookInfo.push(Object.assign({}, item, item2))
+          this.bookInfo.push(Object.assign({}, item, item2));
+          this.sum += Number(item2.qtyRelease)
         }
       }))
     })
