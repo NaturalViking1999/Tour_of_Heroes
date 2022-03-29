@@ -21,7 +21,7 @@ import { HeroesComponent } from './components/heroes/heroes.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { ResumeFormComponent } from './components/resume-form/resume-form.component';
 
-import { InMemoryDataService } from './services/in-memory-data.service';
+// import { InMemoryDataService } from './services/in-memory-data.service';
 import { HeroServiceService2 } from './services/hero.service';
 
 import { FenceCasePipe } from './pipes/fenceCase.pipe';
@@ -56,9 +56,9 @@ const INTERCEPTOR_PROVIDER: Provider = {
     BrowserAnimationsModule,
     MatCheckboxModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, { dataEncapsulation: false }
+    // ),
     AuthModule,
     BookModule,
     MatFormFieldModule,
@@ -67,7 +67,10 @@ const INTERCEPTOR_PROVIDER: Provider = {
     MatButtonModule,
     MatChipsModule
   ],
-  providers: [HeroServiceService2, INTERCEPTOR_PROVIDER],
+  providers: [
+    HeroServiceService2, 
+    INTERCEPTOR_PROVIDER
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

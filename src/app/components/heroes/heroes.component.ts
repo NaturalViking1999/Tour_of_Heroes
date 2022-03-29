@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Hero } from '../../hero';
+import { Hero } from '../../hero.interface';
 import { HeroService, HeroServiceService2 } from '../../services/hero.service';
 
 @Component({

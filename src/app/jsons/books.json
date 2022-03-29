@@ -1,28 +1,4 @@
-import { Injectable } from '@angular/core';
-import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Hero } from '../hero.interface';
-
-@Injectable({
-  providedIn: 'root',
-})
-export class InMemoryDataService implements InMemoryDbService {
-  createDb() {
-    const heroes = [
-    {id: 1, name: 'Antimage'},
-    {id: 2, name: 'Bristleback'}, 
-    {id: 3, name: 'Centaur Warrunner'}, 
-    {id: 4, name: 'Lina'}, 
-    {id: 5, name: 'Sergey Lazarenkov'},
-    {id: 6, name: 'Mr President'},
-    {id: 7, name: 'Big Sanya'},
-    {id: 8, name: 'Anime Fan'},
-    {id: 9, name: 'Bidlo'},
-    {id: 10, name: 'Jew'},
-    {id: 11, name: 'Ass Hacker'},
-    {id: 12, name: 'Vitalic Klitchko'}
-    ];
-
-    const books = {"set1": 
+{"set1": 
     {
     "data": [    {
         "title": "Harry Potter and the Order of the Phoenix",
@@ -59,12 +35,4 @@ export class InMemoryDataService implements InMemoryDbService {
     "set2": {
       "data": [{"id": 1, "releaseDate": "2011-01-02", "qtyRelease": 500},{"id": 2, "releaseDate": "2011-01-03", "qtyRelease": 7500},{"id": 3, "releaseDate": "2011-06-03", "qtyRelease": 9700},{"id": 4, "releaseDate": "2011-07-22", "qtyRelease": 380},{"id": 5, "releaseDate": "2011-06-22", "qtyRelease": 90000},{"id": 6, "releaseDate": "2011-03-22", "qtyRelease": 3805}]
     }
-  }
-
-  return {heroes, books};
-  }
-
-  genId(heroes: Hero[]): number {
-    return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.id)) + 1 : 13;
-  }
 }

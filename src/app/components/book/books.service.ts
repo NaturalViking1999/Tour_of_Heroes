@@ -7,15 +7,14 @@ import { BooksSet1, BooksSet2 } from './book.interfaces';
   providedIn: 'root'
 })
 export class BooksService {
-  private booksUrl = 'api/books'; 
+  private booksUrl = 'http://localhost:4200/api/books.json'; 
 
   constructor(public http: HttpClient) { }
 
   getBooks(): Observable<BooksSet1[]> {
     return this.http.get<BooksSet1[]>(this.booksUrl)
       .pipe(
-        map((response: any) => { return response.set1.data
-        }),
+        map((response: any) => response.set1.data),
         catchError(error => {
           console.log('Error: ', error.message) 
           return throwError(error)
@@ -26,9 +25,7 @@ export class BooksService {
   getBooks2(): Observable<BooksSet2[]> {
     return this.http.get<BooksSet2[]>(this.booksUrl)
       .pipe(
-        map((response: any) => { 
-          return response.set2.data
-        }),
+        map((response: any) => response.set2.data),
         catchError(error => {
           console.log('Error: ', error.message) 
           return throwError(error)
