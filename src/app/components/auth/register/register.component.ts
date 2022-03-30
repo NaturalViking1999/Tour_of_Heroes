@@ -40,9 +40,9 @@ export class RegisterComponent {
       username: this.form.value.username
     }
 
-    this.auth.login(user).subscribe( () => {
+    this.auth.register(user).subscribe( () => {
       this.form.reset();
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/auth', 'login']);
       this.submitted = false;
     },
     () => {

@@ -7,7 +7,8 @@ import { User } from './auth.interface';
   providedIn: 'root'
 })
 export class AuthService {
-  private url: string = 'http://51.250.16.8:4500/login'
+  private url: string = 'http://51.250.16.8:4500/login';
+  private urlReg: string = 'http://51.250.16.8:4500/register';
 
   constructor(private http: HttpClient) { }
 
@@ -16,6 +17,10 @@ export class AuthService {
     .pipe(
       tap(this.setToken)
     )
+  }
+
+  register(user: User): Observable<any> {
+    return this.http.post(this.urlReg, user)
   }
 
   setToken(response: any | null) {
