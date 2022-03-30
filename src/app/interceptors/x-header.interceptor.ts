@@ -17,7 +17,7 @@ export class XHeaderInterceptor implements HttpInterceptor {
             })
         return next.handle(newReq)
         .pipe(
-            tap((resp) => {
+            tap((resp:any) => {
                 console.log(resp)
             }),
             catchError( (error: HttpErrorResponse) => {

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError, map } from 'rxjs';
+import { catchError, Observable, throwError, map, tap } from 'rxjs';
 import { BooksSet1, BooksSet2 } from './book.interfaces';
 
 @Injectable({

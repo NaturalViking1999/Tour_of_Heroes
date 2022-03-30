@@ -29,11 +29,7 @@ export class HeroService {
     public messageService: MessagesService) { }
   
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl, {
-      // headers: {
-      //   Authorization: `Basic ${this.base64}`
-      // }
-    })
+    return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
         tap(_ => this.log('fetched heroes')),
         map((response: any) => response.data),
