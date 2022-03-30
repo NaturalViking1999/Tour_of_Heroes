@@ -7,7 +7,7 @@ import { AuthService } from "../components/auth/auth.service";
 @Injectable()
 
 export class XHeaderInterceptor implements HttpInterceptor {
-    private base64 = btoa('HelloWb:admin')
+    // private base64 = btoa('HelloWb:admin')
     constructor(private router: Router,
        private auth: AuthService) {}
 
@@ -17,7 +17,8 @@ export class XHeaderInterceptor implements HttpInterceptor {
                     //     Authorization: `Basic ${this.base64}`
                     // }
                     setHeaders: {
-                        Authorization: `Bearer ${localStorage.getItem('myToken')}`
+                        Authorization: `Bearer ${localStorage.getItem('myToken')}`,
+                        UpdateToken: `Bearer ${localStorage.getItem('myRefreshToken')}`
                     }
             })
         return next.handle(newReq)

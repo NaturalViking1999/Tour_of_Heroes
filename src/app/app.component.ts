@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './components/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -43,10 +44,11 @@ import { Router } from '@angular/router';
 export class AppComponent {
   public title: string = 'Tour  of  Heroes';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private auth: AuthService) {}
 
   logout() {
     this.router.navigate(['auth']);
-    localStorage.clear();
+    localStorage.removeItem('myToken');
   }
+
 }
