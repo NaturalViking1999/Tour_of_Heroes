@@ -1,33 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CheckCyrillicValidator } from 'src/app/validators/checkCyrilic.validator';
 import { User } from '../auth.interface';
 import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-auth',
   template: `
-  <div>
-    <h2>Create Account</h2>
-    <p class="small">Create a free salmanwap account to access all content.</p>
+  <div style="display:flex; justify-content: center; margin: 30px 0 30px 0">
+    <button class="btn" routerLink="/login" routerLinkActive="active">Login</button>
+    <button class="btn" routerLink="/register" routerLinkActive="active">Register</button>
+ </div>
+  <div class="div-form-control">
+    <h2>Login to your account</h2>
     <form [formGroup]="form" (ngSubmit)="authorize()">
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Email</mat-label>
             <input matInput type="text" placeholder="Add your email" formControlName="email">
-            <small></small>
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Username</mat-label>
-            <input matInput type="text" placeholder="Add your username" formControlName="username">
-            <small></small>
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label for="">Password</mat-label>
             <input matInput type="password" placeholder="Add your password" formControlName="password">
-            <small></small>
         </mat-form-field>
-        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || submitted">Create a free account</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || submitted">Login</button>
     </form>
 </div>`,
   styles: [`
@@ -37,7 +32,7 @@ import { AuthService } from '../auth.service';
     margin: 20px;
   }
   
-  div {
+  .div-form-control {
     margin: 0 auto;
     width: 400px;
     background: rgb(255, 255, 255);
@@ -80,13 +75,13 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
     this.form = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.minLength(4)]),
-      username: new FormControl('', [Validators.minLength(8)])
+      password: new FormControl(null, [Validators.required, Validators.minLength(4)])
     })
   }
 
   authorize() {
     if (this.form.invalid) {
+      this.form.value.password.reset();
       return
     }
 
@@ -94,13 +89,12 @@ export class AuthComponent implements OnInit {
 
     const user: User = {
       email: this.form.value.email,
-      password: this.form.value.password,
-      username: this.form.value.username
+      password: this.form.value.password
     }
 
     this.auth.login(user).subscribe( () => {
       this.form.reset();
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['/dashboard']);
       this.submitted = false;
     },
     () => {

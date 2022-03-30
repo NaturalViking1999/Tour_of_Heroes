@@ -7,7 +7,7 @@ import { BooksSet1, BooksSet2 } from './book.interfaces';
   providedIn: 'root'
 })
 export class BooksService {
-  private booksUrl = 'http://localhost:4200/api/books.json'; 
+  private booksUrl = 'http://51.250.16.8:4500/books'; 
 
   constructor(public http: HttpClient) { }
 

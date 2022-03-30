@@ -26,7 +26,7 @@ export class ResumeFormComponent implements OnInit {
       middlename: new FormControl('', [CheckCyrillicValidator.checkCyrillicForMiddleName]),
       percsArray: new FormArray(this.percs.map(el => new FormControl(el)))
     })
-    console.log(this.myPercs);
+    // console.log(this.myPercs);
   }
 
   get myPercs() {

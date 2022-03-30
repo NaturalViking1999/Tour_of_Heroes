@@ -13,7 +13,7 @@ export class HeroService {
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
   }
-  private heroesUrl = 'http://localhost:4200/api/heroes.json'; 
+  private heroesUrl = 'http://51.250.16.8:4500/heroes'; 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       this.log(`${operation} failed: ${error.message}`);
@@ -32,7 +32,7 @@ export class HeroService {
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
         tap(_ => this.log('fetched heroes')),
-        map((response: any) => response.data),
+        map((response: any) => response.heroes),
         catchError(this.handleError<Hero[]>('getHeroes', []))
       );
   }

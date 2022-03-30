@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from '../auth/auth-guard.service';
 import { BookComponent } from './book.component';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { LastPageComponent } from './last-page/last-page.component';
@@ -9,7 +10,7 @@ import { ThirdPageComponent } from './third-page/third-page.component';
 import { TitlePageComponent } from './title-page/title-page.component';
 
 export const routesBook: Routes = [
-  { path: '', component: BookComponent, children: [
+  { path: '', component: BookComponent, canActivate: [AuthGuardService], children: [
     { path: '', redirectTo: '/titlepage', pathMatch: 'full'},
     { path: 'titlepage', component: TitlePageComponent},
     { path: 'firstpage', component: FirstPageComponent},

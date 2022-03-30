@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { Component } from '@angular/core';
     <a routerLink="/heroes" routerLinkActive="active" class="btn">Heroes</a>
     <a routerLink="/book" routerLinkActive="active" class="btn">Book</a>
     <a routerLink="/resume" routerLinkActive="active" class="btn">Resume</a>
+    <button class="btn red" (click)="logout()">Logout</button>
   </nav>
   <router-outlet></router-outlet>
 </div>
@@ -33,8 +35,18 @@ import { Component } from '@angular/core';
   .hide {
     display: none;
   }
+  .red {
+    background: red;
+  }
   `]
 })
 export class AppComponent {
   public title: string = 'Tour  of  Heroes';
+
+  constructor(private router: Router) {}
+
+  logout() {
+    this.router.navigate(['auth']);
+    localStorage.clear();
+  }
 }

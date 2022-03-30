@@ -18,9 +18,12 @@ export class AuthService {
     )
   }
 
-  setToken(response: any) {
+  setToken(response: any | null) {
     if (response) {
+      console.log(response)
+      const expDate = new Date(new Date().getTime() + +response.expiresIn * 1000);
       localStorage.setItem('myToken', response.token);
+      localStorage.setItem('token-exp', expDate.toString());
     }
     else {
       localStorage.clear();
@@ -29,5 +32,13 @@ export class AuthService {
 
   get token() {
     return localStorage.getItem('myToken')
+  }
+
+  isAuthenticated(): boolean {
+    return !!this.token
+  }
+
+  logout() {
+    this.setToken(null)
   }
 }
