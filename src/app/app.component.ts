@@ -44,10 +44,27 @@ import { AuthService } from './components/auth/auth.service';
   }
   `]
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   public title: string = 'Tour  of  Heroes';
 
   constructor(private router: Router, private auth: AuthService) {}
+
+  ngOnInit(): void {
+    this.updateAfterOut();
+    this.updateToken();
+  }
+
+  updateToken() {
+      setInterval(()=> {
+        this.auth.refreshToken(localStorage.getItem('refreshToken')!)
+        .subscribe(() => console.log(localStorage.getItem('refreshToken')!))
+      }, 10000)
+  }
+
+  updateAfterOut() {
+    this.auth.refreshToken(localStorage.getItem('refreshToken')!)
+    .subscribe(() => console.log(localStorage.getItem('refreshToken')!))
+  }
 
   logout() {
     this.router.navigate(['login']);

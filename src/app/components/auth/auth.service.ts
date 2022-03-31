@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, interval, Observable, tap, throwError } from 'rxjs';
+import { catchError, interval, map, Observable, tap, throwError } from 'rxjs';
 import { User } from './auth.interface';
 
 @Injectable({
@@ -31,29 +31,20 @@ export class AuthService {
   refreshToken(token: string): Observable<any> {
     return this.http.post(this.urlUpdateKey, token)
     .pipe(
-      tap(this.setToken)
+      tap(this.setToken),
+      map(resp => console.log(resp))
     )
   }
 
   setToken(response: any | null) {
     if (response) {
-      const expiresDate = new Date(new Date().getTime() + 119000);
+      const expiresDate = new Date(new Date().getTime() + 60000);
       localStorage.setItem('myToken', response.token);
       localStorage.setItem('date', expiresDate.toString());
       if (response.refreshToken != null) {
         localStorage.setItem('myRefreshToken', response.refreshToken);
       }
     }
-  }
-
-  get token() {
-    setInterval(() => {
-      if (new Date() > new Date(localStorage.getItem('date')!)) {
-        this.refreshToken(localStorage.getItem('myRefreshToken')!)
-        .subscribe(() => console.log('Token update'))
-      }
-    }, 119000)
-    return localStorage.getItem('myToken')
   }
 
   logout() {

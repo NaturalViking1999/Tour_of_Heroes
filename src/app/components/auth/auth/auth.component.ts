@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { catchError, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { User } from '../auth.interface';
 import { AuthService } from '../auth.service';
 
@@ -70,11 +70,9 @@ export class AuthComponent implements OnInit {
   form!: FormGroup;
   submitted!: boolean;
   errorMessage: string = '';
+  sub!: Observable<any>;
 
-  constructor(
-    public auth: AuthService, 
-    private router: Router
-    ) {}
+  constructor(public auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -114,5 +112,4 @@ export class AuthComponent implements OnInit {
     })
    
   }
-
 }
