@@ -62,8 +62,13 @@ export class AppComponent implements OnInit{
   }
 
   updateAfterOut() {
-    this.auth.refreshToken(localStorage.getItem('refreshToken')!)
+    if (localStorage.getItem('refreshToken')) {
+      this.auth.refreshToken(localStorage.getItem('refreshToken')!)
     .subscribe()
+    }
+    else {
+      this.router.navigate(['login']);
+    }
   }
 
   logout() {
