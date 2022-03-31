@@ -95,7 +95,6 @@ export class AuthComponent implements OnInit {
     this.auth.login(user).subscribe( () => {
       this.form.reset();
       this.router.navigate(['/dashboard']);
-      alert('Пошёл нахуй, придурак!')
       this.submitted = false;
     },
     () => {
