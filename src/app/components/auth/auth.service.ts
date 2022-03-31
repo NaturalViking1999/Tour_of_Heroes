@@ -37,7 +37,7 @@ export class AuthService {
 
   setToken(response: any | null) {
     if (response) {
-      const expiresDate = new Date(new Date().getTime() + +12000);
+      const expiresDate = new Date(new Date().getTime() + +120000);
       localStorage.setItem('myToken', response.token);
       localStorage.setItem('date', expiresDate.toString());
       if (response.refreshToken != null) {
