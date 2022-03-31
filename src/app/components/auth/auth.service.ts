@@ -37,7 +37,7 @@ export class AuthService {
 
   setToken(response: any | null) {
     if (response) {
-      const expiresDate = new Date(new Date().getTime() + 2*60*1000);
+      const expiresDate = new Date(new Date().getTime() + 119000);
       localStorage.setItem('myToken', response.token);
       localStorage.setItem('date', expiresDate.toString());
       if (response.refreshToken != null) {
@@ -48,17 +48,16 @@ export class AuthService {
 
   get token() {
     setInterval(() => {
-      if (new Date() > new Date(localStorage.getItem('date')!)) { 
-            this.refreshToken(localStorage.getItem('myRefreshToken')!)
-            .subscribe(() => console.log('Token update'))
+      if (new Date() > new Date(localStorage.getItem('date')!)) {
+        this.refreshToken(localStorage.getItem('myRefreshToken')!)
+        .subscribe(() => console.log('Token update'))
       }
-    }, 2*60*1000)
+    }, 119000)
     return localStorage.getItem('myToken')
   }
 
   logout() {
     localStorage.removeItem('myToken');
-    localStorage.removeItem('myRefreshToken');
     localStorage.removeItem('date');
   }
 }
