@@ -37,7 +37,7 @@ export class AuthService {
 
   setToken(response: any | null) {
     if (response) {
-      const expiresDate = new Date(new Date().getTime() + +120000);
+      const expiresDate = new Date(new Date().getTime() + 2*60*1000);
       localStorage.setItem('myToken', response.token);
       localStorage.setItem('date', expiresDate.toString());
       if (response.refreshToken != null) {
@@ -52,7 +52,7 @@ export class AuthService {
             this.refreshToken(localStorage.getItem('myRefreshToken')!)
             .subscribe(() => console.log('Token update'))
       }
-    }, 120000)
+    }, 2*60*1000)
     return localStorage.getItem('myToken')
   }
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +8,16 @@ import { AuthService } from './auth.service';
 export class AuthGuardService {
 
   constructor(
-    private auth: AuthService
+    private router: Router
   ) { }
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-    return this.auth.isAuthenticated()
+    if (localStorage.getItem('myToken')) {
+      return true;
+    }
+    else {
+      this.router.navigate(['login']);
+      return false;
+    }
   }
 }
