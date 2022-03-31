@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
 import { User } from '../auth.interface';
 import { AuthService } from '../auth.service';
 
@@ -12,6 +13,7 @@ import { AuthService } from '../auth.service';
 export class RegisterComponent {
   form!: FormGroup;
   submitted!: boolean;
+  errorMessage: string = '';
 
   constructor(
     public auth: AuthService, 
@@ -40,7 +42,15 @@ export class RegisterComponent {
       username: this.form.value.username
     }
 
-    this.auth.register(user).subscribe( () => {
+    this.auth.register(user)
+    .pipe(
+      catchError((error) => {
+        this.auth.logout();
+        this.errorMessage = error.error.message;
+        return throwError(error);
+      })
+    )
+    .subscribe( () => {
       this.form.reset();
       this.router.navigate(['/auth', 'login']);
       this.submitted = false;
