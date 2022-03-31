@@ -57,13 +57,13 @@ export class AppComponent implements OnInit{
   updateToken() {
       setInterval(()=> {
         this.auth.refreshToken(localStorage.getItem('refreshToken')!)
-        .subscribe(() => console.log(localStorage.getItem('refreshToken')!))
-      }, 10000)
+        .subscribe()
+      }, 60000)
   }
 
   updateAfterOut() {
     this.auth.refreshToken(localStorage.getItem('refreshToken')!)
-    .subscribe(() => console.log(localStorage.getItem('refreshToken')!))
+    .subscribe()
   }
 
   logout() {

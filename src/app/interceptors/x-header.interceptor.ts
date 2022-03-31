@@ -17,11 +17,6 @@ export class XHeaderInterceptor implements HttpInterceptor {
     
         return next.handle(newReq)
         .pipe(
-            // tap(req => {
-            //     if (new Date() > new Date(localStorage.getItem('date')!)) {
-            //         this.auth.refreshToken(localStorage.getItem('myRefreshToken')!)
-            //     }
-            // }),
           catchError((err) => {
             if (err.status === 401) {
               this.auth.logout();

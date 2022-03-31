@@ -31,8 +31,7 @@ export class AuthService {
   refreshToken(token: string): Observable<any> {
     return this.http.post(this.urlUpdateKey, token)
     .pipe(
-      tap(this.setToken),
-      map(resp => console.log(resp))
+      tap(this.setToken)
     )
   }
 
