@@ -12,13 +12,6 @@ export class AuthGuardService {
   ) { }
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-    let bool: boolean;
-    if (this.auth.isAuthenticated()) {
-      bool = true
-    } 
-    else {
-      bool = false
-    }
-    return bool
+    return this.auth.isAuthenticated()
   }
 }

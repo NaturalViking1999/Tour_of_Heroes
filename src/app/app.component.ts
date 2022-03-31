@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './components/auth/auth.service';
 
@@ -12,7 +12,7 @@ import { AuthService } from './components/auth/auth.service';
  
 <div class="nav">
   <nav>
-    <a routerLink="/auth" routerLinkActive="active" class="btn">Auth</a>
+    <!-- <a routerLink="/login" routerLinkActive="active" class="btn">Auth</a> -->
     <a routerLink="/dashboard" routerLinkActive="active" class="btn">Dashboard</a>
     <a routerLink="/heroes" routerLinkActive="active" class="btn">Heroes</a>
     <a routerLink="/book" routerLinkActive="active" class="btn">Book</a>
@@ -26,12 +26,15 @@ import { AuthService } from './components/auth/auth.service';
   styles: [`
   .nav nav {
     margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
   }
   #animate {
     padding: 10px 0 10px 0;
     font-weight: bold;
     font-size: 50px;
     diplay: block;
+    text-align: center;
   }
   .hide {
     display: none;
@@ -47,8 +50,7 @@ export class AppComponent {
   constructor(private router: Router, private auth: AuthService) {}
 
   logout() {
-    this.router.navigate(['auth']);
-    localStorage.removeItem('myToken');
+    this.router.navigate(['login']);
+    this.auth.logout();
   }
-
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
 import { User } from '../auth.interface';
 import { AuthService } from '../auth.service';
 
@@ -18,10 +19,12 @@ import { AuthService } from '../auth.service';
             <mat-label>Email</mat-label>
             <input matInput type="text" placeholder="Add your email" formControlName="email">
         </mat-form-field>
+        <div></div>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label for="">Password</mat-label>
             <input matInput type="password" placeholder="Add your password" formControlName="password">
         </mat-form-field>
+        <mat-error style="text-align: center; margin-bottom: 10px;" *ngIf="errorMessage">{{ errorMessage }}</mat-error>
         <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || submitted">Login</button>
     </form>
 </div>`,
@@ -66,6 +69,7 @@ import { AuthService } from '../auth.service';
 export class AuthComponent implements OnInit {
   form!: FormGroup;
   submitted!: boolean;
+  errorMessage: string = '';
 
   constructor(
     public auth: AuthService, 
@@ -92,7 +96,15 @@ export class AuthComponent implements OnInit {
       password: this.form.value.password
     }
 
-    this.auth.login(user).subscribe( () => {
+    this.auth.login(user)
+    .pipe(
+      catchError((error) => {
+        this.auth.logout();
+        this.errorMessage = error.error.message;
+        return throwError(error);
+      })
+    )
+    .subscribe( () => {
       this.form.reset();
       this.router.navigate(['/dashboard']);
       this.submitted = false;

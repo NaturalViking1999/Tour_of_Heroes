@@ -21,7 +21,6 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatInputModule,
     RouterModule.forChild([
-      {path: '', redirectTo: '/login', pathMatch: 'full'},
       {path: 'login', component: AuthComponent},
       {path: 'register', component: RegisterComponent}
     ])

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { catchError, interval, Observable, tap, throwError } from 'rxjs';
 import { User } from './auth.interface';
 
 @Injectable({
@@ -37,19 +37,22 @@ export class AuthService {
 
   setToken(response: any | null) {
     if (response) {
-      console.log(response)
-      const expiresDate = new Date(new Date().getTime() + +7200000);
+      const expiresDate = new Date(new Date().getTime() + +12000);
       localStorage.setItem('myToken', response.token);
       localStorage.setItem('date', expiresDate.toString());
-      localStorage.setItem('myRefreshToken', response.refreshToken);
+      if (response.refreshToken != null) {
+        localStorage.setItem('myRefreshToken', response.refreshToken);
+      }
     }
   }
 
   get token() {
-    if (new Date() > new Date(localStorage.getItem('date')!)) {
-      this.refreshToken(localStorage.getItem('myRefreshToken')!)
-      .subscribe(() => console.log('Token update'))
-    }
+    setInterval(() => {
+      if (new Date() > new Date(localStorage.getItem('date')!)) { 
+            this.refreshToken(localStorage.getItem('myRefreshToken')!)
+            .subscribe(() => console.log('Token update'))
+      }
+    }, 120000)
     return localStorage.getItem('myToken')
   }
 
@@ -58,6 +61,8 @@ export class AuthService {
   }
 
   logout() {
-    this.setToken(null)
+    localStorage.removeItem('myToken');
+    localStorage.removeItem('myRefreshToken');
+    localStorage.removeItem('date');
   }
 }
