@@ -13,6 +13,7 @@ export class AuthGuardService {
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     if (localStorage.getItem('myToken')) {
+      // this.router.navigate(['dashboard']);
       return true;
     }
     else {
