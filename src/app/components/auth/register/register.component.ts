@@ -52,7 +52,7 @@ export class RegisterComponent {
     )
     .subscribe( () => {
       this.form.reset();
-      this.router.navigate(['/auth', 'login']);
+      this.router.navigate(['login']);
       this.submitted = false;
     },
     () => {

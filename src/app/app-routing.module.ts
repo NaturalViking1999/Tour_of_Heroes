@@ -11,12 +11,12 @@ import { ResumeFormComponent } from './components/resume-form/resume-form.compon
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
-  { path: '*', redirectTo: '/login'},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
   { path: 'heroes', component: HeroesComponent, canActivate: [AuthGuardService]},
   { path: 'login', component: AuthComponent, canActivate:[RedirectDashboardGuardService]},
   { path: 'book', children: [...routesBook], canActivate: [AuthGuardService] },
   { path: 'resume', component: ResumeFormComponent, canActivate: [AuthGuardService]},
+  { path: '**', redirectTo: '/login'}
 ];
 
 @NgModule({

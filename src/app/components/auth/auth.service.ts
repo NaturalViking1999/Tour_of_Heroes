@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, interval, map, Observable, tap, throwError } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { User } from './auth.interface';
 
 @Injectable({
@@ -28,8 +28,8 @@ export class AuthService {
     return this.http.post(this.urlReg, user)
   }
 
-  refreshToken(token: string): Observable<any> {
-    return this.http.post(this.urlUpdateKey, token)
+  refreshToken(refreshToken: string): Observable<any> {
+    return this.http.post(this.urlUpdateKey, {'refreshToken': refreshToken})
     .pipe(
       tap(this.setToken)
     )

@@ -50,8 +50,10 @@ export class AppComponent implements OnInit{
   constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit(): void {
-    this.updateAfterOut();
-    this.updateToken();
+    if (localStorage.getItem('refreshToken')) {
+      this.updateAfterOut();
+      this.updateToken();
+    }
   }
 
   updateToken() {
