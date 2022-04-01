@@ -41,7 +41,7 @@ export class AuthService {
       localStorage.setItem('myToken', response.token);
       localStorage.setItem('date', expiresDate.toString());
       if (response.refreshToken != null) {
-        localStorage.setItem('myRefreshToken', response.refreshToken);
+        localStorage.setItem('refreshToken', response.refreshToken);
       }
     }
   }
