@@ -18,25 +18,25 @@ export class XHeaderInterceptor implements HttpInterceptor {
         return next.handle(newReq)
         .pipe(
           catchError((err) => {
-            if (err.status === 401) {
-              return this.auth.refreshToken(localStorage.getItem('myRefreshToken')!)
-                .pipe(
-                  switchMap((res: any) => {
-                    localStorage.setItem('myToken', res.token);
-                    return next.handle(
-                      req.clone({
-                        headers: req.headers.set('Authorization', `Bearer ${res.token}`),
-                      })
-                    );
-                  }),
-                  catchError((err) => {
+            // if (err.status === 401) {
+            //   return this.auth.refreshToken(localStorage.getItem('myRefreshToken')!)
+            //     .pipe(
+            //       switchMap((res: any) => {
+            //         localStorage.setItem('myToken', res.token);
+            //         return next.handle(
+            //           req.clone({
+            //             headers: req.headers.set('Authorization', `Bearer ${res.token}`),
+            //           })
+            //         );
+            //       }),
+            //       catchError((err) => {
                     this.auth.logout();
                     return throwError(err);
-                  })
-                );
-            }
+            //       })
+            //     );
+            // }
     
-            return throwError(err);
+            // return throwError(err);
           })
         );
       }

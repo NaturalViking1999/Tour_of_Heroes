@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from './components/auth/auth-guard.service';
 import { AuthComponent } from './components/auth/auth/auth.component';
+import { RedirectDashboardGuardService } from './components/auth/redirect-dashboard-guard.service';
 import { routesBook } from './components/book/book-routing.module';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -13,7 +14,7 @@ const routes: Routes = [
   { path: '*', redirectTo: '/login'},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
   { path: 'heroes', component: HeroesComponent, canActivate: [AuthGuardService]},
-  { path: 'login', component: AuthComponent},
+  { path: 'login', component: AuthComponent, canActivate:[RedirectDashboardGuardService]},
   { path: 'book', children: [...routesBook], canActivate: [AuthGuardService] },
   { path: 'resume', component: ResumeFormComponent, canActivate: [AuthGuardService]},
 ];

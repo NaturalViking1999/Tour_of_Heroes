@@ -6,6 +6,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
+import { RedirectDashboardGuardService } from './redirect-dashboard-guard.service';
 
 
 
@@ -21,8 +22,7 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatInputModule,
     RouterModule.forChild([
-      {path: 'login', component: AuthComponent},
-      {path: 'register', component: RegisterComponent}
+      {path: 'register', component: RegisterComponent, canActivate:[RedirectDashboardGuardService]}
     ])
   ],
   exports: [
