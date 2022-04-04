@@ -22,6 +22,17 @@ export class BooksService {
       );
   }
 
+  getBooks3() {
+    return this.http.get(this.booksUrl)
+      // .pipe(
+      //   map((response: any) => response.set1.data),
+      //   catchError(error => {
+      //     console.log('Error: ', error.message) 
+      //     return throwError(error)
+      //   })
+      // );
+  }
+
   getBooks2(): Observable<BooksSet2[]> {
     return this.http.get<BooksSet2[]>(this.booksUrl)
       .pipe(
