@@ -20,10 +20,7 @@ export class HeroService {
       return of(result as T);
     };
   }
-  // httpOptions = {
-  //   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  // };
-
+  
   constructor(
     public http: HttpClient,
     public messageService: MessagesService) { }

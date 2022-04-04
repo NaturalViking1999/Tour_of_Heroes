@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError, map, tap } from 'rxjs';
+import { catchError, Observable, throwError, map } from 'rxjs';
 import { BooksSet1, BooksSet2 } from './book.interfaces';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { BooksSet1, BooksSet2 } from './book.interfaces';
 export class BooksService {
   private booksUrl = 'http://51.250.16.8:4500/books'; 
 
-  constructor(public http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getBooks(): Observable<BooksSet1[]> {
     return this.http.get<BooksSet1[]>(this.booksUrl)

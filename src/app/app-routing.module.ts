@@ -13,10 +13,10 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
   { path: 'heroes', component: HeroesComponent, canActivate: [AuthGuardService]},
-  { path: 'login', component: AuthComponent, canActivate:[RedirectDashboardGuardService]},
   { path: 'book', children: [...routesBook], canActivate: [AuthGuardService] },
   { path: 'resume', component: ResumeFormComponent, canActivate: [AuthGuardService]},
-  { path: '**', redirectTo: '/login'}
+  { path: 'login', component: AuthComponent, canActivate:[RedirectDashboardGuardService]},
+  // { path: '**', redirectTo: '/login'}
 ];
 
 @NgModule({

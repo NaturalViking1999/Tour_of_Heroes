@@ -22,6 +22,7 @@ import { RedirectDashboardGuardService } from './redirect-dashboard-guard.servic
     MatButtonModule,
     MatInputModule,
     RouterModule.forChild([
+      // { path: 'login', component: AuthComponent, canActivate:[RedirectDashboardGuardService]},
       {path: 'register', component: RegisterComponent, canActivate:[RedirectDashboardGuardService]}
     ])
   ],

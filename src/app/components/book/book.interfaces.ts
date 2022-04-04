@@ -1,9 +1,21 @@
 export interface BooksInterface {
-  set1?: {
-    data: BooksSet1[]
+  set1: {
+    data: [
+      {
+        id: number,
+        title: string,
+        description: string
+    }
+    ]
   },
-  set2?: {
-    data: BooksSet2[]
+  set2: {
+    data: [
+      {
+        id: number,
+        releaseDate: string,
+        qtyRelease: string,
+      }
+    ]
   }
 }
 
@@ -25,14 +37,3 @@ export interface Book {
   title: string,
   description: string
 }
-
-// export interface Books extends BooksSet1, BooksSet2{
-// [index: number]:
-//   {
-//     id: number,
-//     title?: string,
-//     description?: string,
-//     releaseDate?: string,
-//     qtyRelease?: string,
-//   }
-// }

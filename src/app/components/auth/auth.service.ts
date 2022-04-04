@@ -16,7 +16,7 @@ export class AuthService {
   login(user: User): Observable<any> {
     return this.http.post(this.url, user)
     .pipe(
-      tap(this.setToken),
+      tap((res) => this.setToken(res)),
       catchError(error => {
         console.log('Error: ', error.message) 
         return throwError(error)
@@ -31,7 +31,7 @@ export class AuthService {
   refreshToken(refreshToken: string): Observable<any> {
     return this.http.post(this.urlUpdateKey, {'refreshToken': refreshToken})
     .pipe(
-      tap(this.setToken)
+      tap((res) => this.setToken(res))
     )
   }
 

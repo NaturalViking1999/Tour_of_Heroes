@@ -26,7 +26,6 @@ export class TableBooksComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if(this.myStream$) {
       this.myStream$.unsubscribe();
-      // console.log(this.myStream$)
     }
   }
 
