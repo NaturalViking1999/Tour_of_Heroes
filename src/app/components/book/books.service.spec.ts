@@ -86,7 +86,7 @@ describe('BooksServiceTest', () => {
         service.getBooks3().subscribe({
             next: books => {
                 expect(books)
-                .withContext('expected heroes')
+                .withContext('expected books')
                 .toEqual(expectedBooks);
                 done();
             },
